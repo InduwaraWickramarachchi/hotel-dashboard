@@ -1,0 +1,18 @@
+import { Bed, Book, Calendar, TrendingUpDownIcon } from 'lucide-react';
+import SidebarCard from './SidebarCard';
+
+const Sidebar = ({}) => {
+  return (
+    <div className="w-1/5 space-y-4 bg-amber-50">
+      <h1 className="p-8 text-2xl font-semibold text-gray-800">Dashboard</h1>
+      <div className="flex flex-col">
+        <SidebarCard title="Total Bookings" icon={Book} />
+        <SidebarCard title="Available Rooms" icon={Bed} />
+        <SidebarCard title="Checked-In Today" icon={Calendar} />
+        <SidebarCard title="Revenue (LKR)" icon={TrendingUpDownIcon} />
+      </div>
+    </div>
+  );
+};
+
+export default Sidebar;
