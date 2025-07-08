@@ -1,5 +1,6 @@
 'use client';
 
+import SnackBarMsg from '@/components/SnackBarMsg';
 import { useState } from 'react';
 
 export default function LoginForm() {
@@ -44,8 +45,6 @@ export default function LoginForm() {
       >
         <h2 className="text-center text-2xl font-semibold text-gray-800">Admin Login</h2>
 
-        {error && <div className="text-sm text-red-600">{error}</div>}
-
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             Email
@@ -82,6 +81,7 @@ export default function LoginForm() {
           {loading ? 'Logging in...' : 'Login'}
         </button>
       </form>
+      {error && <SnackBarMsg message={error} isError={true} />}
     </div>
   );
 }
