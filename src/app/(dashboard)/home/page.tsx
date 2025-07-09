@@ -1,6 +1,8 @@
 'use client';
 
 import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
+
 import {
   BedDouble,
   CalendarCheck,
@@ -50,15 +52,18 @@ const DashboardCard: FC<DashboardCardProps> = ({ title, icon: Icon, className = 
 
 const Home = () => {
   return (
-    <div className="flex w-full flex-col">
-      <Header title="Dashboard - Home" welcomeMsg="Welcome Admin" />
-      <div className="flex h-full w-full flex-wrap items-center justify-center gap-4">
-        {dashboard_modules &&
-          dashboard_modules.map(module => (
-            <DashboardCard title={module.title} icon={module.icon} key={module.title} />
-          ))}
+    <>
+      <Sidebar />
+      <div className="flex w-full flex-col">
+        <Header title="Dashboard - Home" welcomeMsg="Welcome Admin" />
+        <div className="flex h-full w-full flex-wrap items-center justify-center gap-4">
+          {dashboard_modules &&
+            dashboard_modules.map(module => (
+              <DashboardCard title={module.title} icon={module.icon} key={module.title} />
+            ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

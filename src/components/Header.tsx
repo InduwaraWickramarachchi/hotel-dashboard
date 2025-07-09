@@ -1,3 +1,4 @@
+import { signOut } from 'next-auth/react';
 import { FC } from 'react';
 
 interface HeaderProps {
@@ -12,7 +13,10 @@ const Header: FC<HeaderProps> = ({ title, welcomeMsg }) => {
         <h2>{title}</h2>
         <div className="px-4">{welcomeMsg}</div>
       </div>
-      <button className="inline rounded-lg bg-amber-100 px-8 py-3 text-amber-600 transition-colors duration-300 hover:bg-amber-50">
+      <button
+        className="inline cursor-pointer rounded-lg bg-amber-100 px-8 py-3 text-amber-600 shadow-md transition-all duration-200 hover:bg-amber-200 active:translate-y-[1px] active:shadow-inner"
+        onClick={() => signOut({ callbackUrl: 'http://localhost:3200/login' })}
+      >
         Logout
       </button>
     </div>
