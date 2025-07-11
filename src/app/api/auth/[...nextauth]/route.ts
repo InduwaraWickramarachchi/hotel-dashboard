@@ -31,9 +31,31 @@ export const authOptions: AuthOptions = {
       },
     }),
   ],
+
   session: {
     strategy: 'jwt',
   },
+
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+        token.name = user.name;
+      }
+      return token;
+    },
+
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id;
+        session.user.email = token.email;
+        session.user.name = token.name;
+      }
+      return session;
+    },
+  },
+
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/login',

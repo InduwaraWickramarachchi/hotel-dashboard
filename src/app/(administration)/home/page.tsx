@@ -1,5 +1,6 @@
 'use client';
 
+import ProtectedLayout from '@/components/Authentication/ProtectedLayout';
 import {
   BedDouble,
   CalendarCheck,
@@ -49,12 +50,14 @@ const DashboardCard: FC<DashboardCardProps> = ({ title, icon: Icon, className = 
 
 const Home = () => {
   return (
-    <div className="flex h-full flex-wrap items-center justify-center gap-4 p-8">
-      {dashboard_modules &&
-        dashboard_modules.map(module => (
-          <DashboardCard title={module.title} icon={module.icon} key={module.title} />
-        ))}
-    </div>
+    <ProtectedLayout>
+      <div className="flex h-full flex-wrap items-center justify-center gap-4 p-8">
+        {dashboard_modules &&
+          dashboard_modules.map(module => (
+            <DashboardCard title={module.title} icon={module.icon} key={module.title} />
+          ))}
+      </div>
+    </ProtectedLayout>
   );
 };
 
